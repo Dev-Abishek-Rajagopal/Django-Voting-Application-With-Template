@@ -1,0 +1,14 @@
+{% for instance in object_list %}
+{% if instance.name != 'NOTA' %}
+     <ul><p> Candidate ID :{{ instance.id }} 
+     	<p>Symbol :<br> <img src='{{ instance.symbol.url }}' height="60" width="60"></img></p>
+     	Name: <a href='{{ instance.get_absolute_url }}'> {{ instance.name }}</a></p>
+     	{% else %}
+ 	 <ul><input type="radio" name="vote" value="{{ instance.id }}"><p>{{ instance.name }} </p></ul>
+    {% endif %}
+     	<br>
+     	<br>
+     	<br>
+{% endfor %}
+<button><a href="candi-create">Create Candidate</a></button>
+<button><a href="../">Back</a></button>

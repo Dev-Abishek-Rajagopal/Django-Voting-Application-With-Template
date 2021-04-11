@@ -1,0 +1,39 @@
+<h1>hi</h1>
+<button>End Election</button>
+<button><a href="../">Back</a></button>
+<h1>Live Analtics</h1>
+{% for instance in queryset %}
+{% if instance.name != 'NOTA' %}
+     <ul>
+     	<p>Candidate ID: {{instance.id}}<br><a href='{{ instance.get_absolute_url }}'> <img src='{{ instance.symbol.url }}' height="60" width="60"></img></a></p>
+         <h2>Votes : {{instance.votes}}</h2><br><br>
+     	
+     	</ul>
+     	{% else %}
+ 	 <ul><p>{{ instance.name }} </p>
+ 	 <h2>Votes : {{instance.votes}}</h2></ul><br><br>
+    {% endif %}
+     	
+{% endfor %}
+<button><a href="../">Back</a></button>
+
+
+<h1>Yet To Vote</h1>
+{% for i in queryset1 %}
+	{% if i.cashing == 0 or i.cashing == None %}
+    <li> Voter Id: {{i.id}} <Br> Roll No: {{ i.rolno}}<br>Name: {{ i.name}}
+    	<br><br>
+	
+	{% endif %}
+{% endfor %} 
+<br>
+
+<h1>Finished Voting</h1>
+{% for i in queryset1 %}
+	{% if i.cashing != 0 and i.cashing != None %}
+    <li> Voter Id: {{i.id}} <Br> Roll No: {{ i.rolno}}<br>Name: {{ i.name}}
+    	<br><br>
+	
+	{% endif %}
+{% endfor %}
+<button><a href="../">Back</a></button>

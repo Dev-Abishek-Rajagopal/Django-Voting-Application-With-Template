@@ -1,0 +1,25 @@
+
+{% if id %}
+   <form action='.'  method='POST'>{% csrf_token %}
+ 	
+      {{ form.as_p }}
+
+	   <button><a href="{{id}}/vote/">Login</a></button>
+
+       {% if vali %}
+       {{vali}}
+       {% endif %}
+      
+{% else %}
+   <form action='.' method='POST'>{% csrf_token %}
+ 	
+        {{ form.as_p }}
+
+	    <input type='submit' value='Login' />
+
+        {% if vali %}
+        {{vali}}
+        {% endif %}
+{% endif %}
+
+<button><a href="../">Back</a></button>

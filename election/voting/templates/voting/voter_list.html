@@ -1,0 +1,7 @@
+{% for instance in object_list %}
+     <p> Voter ID :{{ instance.id }} 
+
+     	<Br>Name: <a href='{{ instance.get_absolute_url }}'> {{ instance.name }}</a></p>
+{% endfor %}
+<button><a href="vot-create/">Create Voter</a></button>
+<button><a href="../">Back</a></button>

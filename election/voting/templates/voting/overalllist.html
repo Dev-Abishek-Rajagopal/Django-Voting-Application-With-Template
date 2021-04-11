@@ -1,0 +1,16 @@
+<h1>Overall Voters</h1>
+{% for i in objectlist1 %}
+    <li> Voter Id: {{i.id}} <Br> Roll No: {{ i.rolno}}<br>Name: {{ i.name}}
+    	<br><br>
+{% endfor %}     
+<h1>Overall Candidates</h1>
+{% for i in objectlist2 %}
+{% if instance.name != 'NOTA' %}
+    <li> Candidate Id: {{i.id}}<br>Roll No: {{ i.rolno}}<br> Name: {{ i.name}}<br>
+    	Symbol :<br> <img src='{{ i.symbol.url }}' height="60" width="60"></img><br><br>
+    	{% else %}
+ 	 <ul><input type="radio" name="vote" value="{{ instance.id }}"><p>{{ instance.name }} </p></ul>
+    {% endif %}
+{% endfor %}     
+
+<button><a href="../">Back</a></button>

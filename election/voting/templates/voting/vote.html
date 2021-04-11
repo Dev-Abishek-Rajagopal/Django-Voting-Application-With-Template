@@ -1,0 +1,58 @@
+<!---{% for instance in object_list %}
+
+<form action='.' method='POST' enctype='multipart/form-data'>{% csrf_token %}
+     <ul><input type="radio" name="gender" value="{{ instance.id }}"><p> Candidate ID :{{ instance.id }} 
+     	<p>Symbol :<br> <img src='{{ instance.symbol.url }}' height="60" width="60"></img></p>
+     	Name: <a href='{{ instance.get_absolute_url }}'> {{ instance.name }}</a></p></ul>
+     	<br>
+     	<br>
+     	<br>
+{% endfor %}
+</form>
+<button><a href="candi-create">Create Voter</a></button>
+--->
+
+<h1>Hi.. {{ object.name }},</h1>
+<h3><u>Your Info:</u></h3>
+<p>Voter ID : {{ object.id }}</p>
+<p>Roll No : {{ object.rolno }}</p>
+<p>UserNamec : {{ object.Username }}</p>
+<p>Password : {{ object.Password }}</p>
+<br>
+<button><a href="../../">Logout</a></button>
+<br>
+<br>
+<br>
+{% if h_type %}
+<form action='.' method='POST' enctype='multipart/form-data'>{% csrf_token %}
+
+<img src='{{obj.symbol.url}}' height="300" width="300"></img>
+<h3> You have successfully voted for <b><i>{{obj.name}}</i></b></h3>
+<h3> Candidate ID: <b><i>{{obj.id}}</i></b></h3>
+<h3> Roll No: <b><i>{{obj.rolno}}</i></b></h3>
+
+</form>
+<button><a href="../../../overall">Confirm & Logout</a></button>
+
+</form>
+
+{% else %}
+<h1><u>Vote For your Candidate</u></h1>
+
+
+{% for instance in object_list %}
+
+<form action='.' method='POST' enctype='multipart/form-data'>{% csrf_token %}
+	{% if instance.name != 'NOTA' %}
+     <ul><input type="radio" name="vote" value="{{ instance.id }}"><p> Candidate ID :{{ instance.id }} 
+     	<p>Symbol :</p><img src='{{ instance.symbol.url }}' height="60" width="60"></img><br>
+     	Name:  {{ instance.name }}</p></ul>
+     	<br>
+ 	{% else %}
+ 	 <ul><input type="radio" name="vote" value="{{ instance.id }}"><p>{{ instance.name }} </p></ul>
+    {% endif %}
+     	
+{% endfor %}
+     <input type='submit' value='Vote' />
+</form>
+{% endif %}
